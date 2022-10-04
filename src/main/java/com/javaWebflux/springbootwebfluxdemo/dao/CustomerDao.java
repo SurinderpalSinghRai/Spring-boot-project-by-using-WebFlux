@@ -22,7 +22,7 @@ public class CustomerDao {
         }
     }
 
-    public List<Customer> getCuctomers(){
+    public List<Customer> getCustomers(){
        return IntStream.rangeClosed(1,20)
                .peek(CustomerDao::sleepMethod)
                 .peek(i->System.out.println("processing count:" + i))
@@ -30,11 +30,18 @@ public class CustomerDao {
                 .collect(Collectors.toList());
 
     }
-    public Flux<Customer> getCuctomersStream(){
+    public Flux<Customer> getCustomersStream(){
           return Flux.range(1,20)
                   .delayElements(Duration.ofSeconds(1))
                   .doOnNext(i->System.out.println("processing count:" + i))
                   .map(i->new Customer(i , "Customer"+ i));
+
+    }
+
+    public Flux<Customer> getCustomerList(){
+        return Flux.range(1,30)
+                .doOnNext(i->System.out.println("processing count:" + i))
+                .map(i->new Customer(i , "Customer"+ i));
 
     }
 }

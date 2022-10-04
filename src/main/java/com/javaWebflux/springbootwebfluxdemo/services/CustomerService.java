@@ -16,7 +16,7 @@ public class CustomerService {
 
     public List<Customer> loadAllCustomers(){
             long start = System.currentTimeMillis();
-            List<Customer> customers = customerDao.getCuctomers();
+            List<Customer> customers = customerDao.getCustomers();
             long end = System.currentTimeMillis();
             System.out.println("Time difference"+(start-end));
             return customers;
@@ -25,7 +25,7 @@ public class CustomerService {
 
     public Flux<Customer> loadAllCustomersStream() {
         long start = System.currentTimeMillis();
-        Flux<Customer> customers = customerDao.getCuctomersStream();
+        Flux<Customer> customers = customerDao.getCustomersStream();
         long end = System.currentTimeMillis();
         System.out.println("Time difference"+(start-end));
         return customers;
